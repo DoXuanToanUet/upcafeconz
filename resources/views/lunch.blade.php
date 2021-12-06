@@ -38,7 +38,7 @@
                                                                         </div>
                                                                         <div class="">
                                                                             <div class="box3 float-right">
-                                                                                <input class="form-check-input check-border-input check-lunch-input  " type="radio" value="{{$data['main-options'][$i]['id']}}" id="flexCheckChecked" name="main-options">
+                                                                                <input class="form-check-input check-border-input lunch-check-main " type="radio" value="{{$data['main-options'][$i]['id']}}" id="flexCheckChecked" name="main-options">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -76,7 +76,7 @@
                         
                                                                                     @foreach($data['salad'] as $d)
                                                                                         <div class="form-check mt-5">
-                                                                                            <input class="form-check-input" type="checkbox" value="{{$d->id}}" id="flexCheckDefault" name="salad[]">
+                                                                                            <input class="form-check-input lunch-check-input" type="checkbox" value="{{$d->id}}" id="flexCheckDefault" name="salad[]">
                                                                                             <label class="form-check-label items-name" for="flexCheckDefault">
                                                                                                 {{$d->name}}
                                                                                             </label>
@@ -279,34 +279,60 @@
 
 @section('scripts')
     <script>
-        $('body').on('change', '.form-check-input', function () {
-            if ($('.form-check-input:checked').length > 0) {
-                if ($('.view-my-selection-button').prop('disabled')) {
-                    $('.view-my-selection-button').prop('disabled', false);
-                }
-            } else {
-                $('.view-my-selection-button').prop('disabled', true);
-            }
-        });
+        // $('body').on('change', '.form-check-input', function () {
+        //     if ($('.form-check-input:checked').length > 0) {
+        //         if ($('.view-my-selection-button').prop('disabled')) {
+        //             $('.view-my-selection-button').prop('disabled', false);
+        //         }
+        //     } else {
+        //         $('.view-my-selection-button').prop('disabled', true);
+        //     }
+        // });
          $(function () {
             const $body = $('body');
            
-            $body.on('click', '.check-lunch-input', function (event) {
+            $body.on('click', '.lunch-check-main', function (event) {
                 $('.setup').hide();
                 $('.setup-'+$(this).val()).show();
-                // $(this).each(function () {
-                //     // $(this).closest('.option3-section').find('.card-footer').addClass('d-none');
-                //    if ( $(this).is(":checked")  ){
-                //        console.log("checked");
-                //        $(this).closest('.option3-section').find('.card-footer').removeClass('d-none');
-                //    }else{
-                //         $(this).closest('.option3-section').find('.card-footer').addClass('d-none');
-                //         console.log("not checked");
-                //    }
-                // });
                 $()
             });
 
+
+            // Event choose 1 select
+            var countCheckbox = 0;
+            
+            $('body').on('change', '.lunch-check-main', function () {
+                $('.view-my-selection-button').prop('disabled', true);
+                $(this).closest('.option3-section').find('.additional-section .form-check-input').on('change',function(){
+                    if($(this).is(":checked")){
+                        countCheckbox=countCheckbox+1;
+                    }else{
+                        countCheckbox=countCheckbox-1;
+                    }
+                    console.log(countCheckbox)
+                    if ( countCheckbox >= 1   ) {
+                        
+                        if ($('.view-my-selection-button').prop('disabled')) {
+                            $('.view-my-selection-button').prop('disabled', false);
+                        }
+                    } else {
+                          
+                            $('.view-my-selection-button').prop('disabled', true);
+                        }
+                })
+
+               
+                $(this).closest('.option3-section').find('.additional-section .form-check-input').on('change',function(){
+                    countLengthSelect=$(this).parent().parent().parent().parent().find('input[type="checkbox"]:checked').length;
+                    // console.log(countLengthSelect)
+                    //  Other case  
+                    if(countLengthSelect >= 1){
+                        $(this).parent().parent().parent().parent().find('input[type="checkbox"]').not(":checked").attr("disabled",true);
+                    }else{
+                        $(this).parent().parent().parent().parent().find('input[type="checkbox"]').not(":checked").attr("disabled",false);
+                    }
+                })
+            })
         });
     </script>
 @endsection

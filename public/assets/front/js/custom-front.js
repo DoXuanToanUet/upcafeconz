@@ -207,6 +207,19 @@ function checkNoneSelect(input){
     })  
     
 }
+$(document).on('click', '.lunch-check-main', function () {
+   
+    if($(this).is(":checked")) {
+        $('.check-lunch-input').parent().parent().parent().parent().parent().removeClass('border-custom');
+        $(this).parent().parent().parent().parent().parent().toggleClass('border-custom');
+        // $('#menu').trigger("reset");
+        $('.form-check-input').prop("disabled",false);
+        $('.form-check-input.lunch-check-input').prop("checked",false);
+        console.log("lunch input")
+    
+    }
+
+})
 $(document).on('click', '.check-dinner-input', function () {
    
     if($(this).is(":checked")) {

@@ -67,7 +67,7 @@
                                                         @if($d['menu']['price'] && $d['menu']['name'] != 'Dinner | Option 1' && $d['menu']['name'] != 'Dinner | Option 2' && $d['menu']['name'] != 'Dinner | Option 3' && $d['menu']['name'] != 'Dinner | Option 4')
                                                             <img src="/assets/front/assets/img/green-1.png"
                                                                  style="width: 30px;  transform: translate(-2px, -3px);">
-                                                            <span style="color: green;">$ {{ $d['menu']['price'] }} pp</span>
+                                                            <span style="color: green;">$ <span class="menu-item">{{ $d['menu']['price'] }}</span> pp</span>
 
                                                         @endif
                                                     </div>
@@ -119,10 +119,10 @@
                                                 <hr>
                                                 <?php $i++;?>
                                             @endforeach
-                                            <div class="row">
-                                                <div class="col col-md-6">Total</div>
-                                                <div class="col col-md-2"></div>
-                                                <div class="col col-md-3"></div>
+                                            <div class="row" style="margin-top:20px;font-family:CocoSharp">
+                                                <div class="col col-md-6" style="font-size:20px">Total</div>
+                                                <div class="col col-md-2 count-price text-center " style="color:#8ec39b;font-size:20px"></div>
+                                                <div class="col col-md-3 "></div>
                                                 <div class="col col-md-1"></div>
                                             </div>
                                         </div>
@@ -261,4 +261,25 @@
             border-right: none;
         }
     </style>
+@endsection
+@section('scripts')
+    <script>
+
+        // Count local Price when use choose item
+        getMenuItem = $('.menu-item');
+        countPrice = [];
+        $(getMenuItem).each( function () {
+            menuItem = parseFloat( $(this).html() );
+            countPrice.push(menuItem);
+        })
+        
+        sumPrice = 0;
+        countPrice.forEach(item => {
+            sumPrice = sumPrice + item;
+        });
+        
+        $('.count-price').html(`$ ${sumPrice} pp`);
+
+        
+    </script>
 @endsection
