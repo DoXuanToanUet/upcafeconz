@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Review')
 @section('content')
+
 <style>
     hr {
         margin-top: 1rem;
@@ -47,6 +48,7 @@
                                     <div class="col-lg-9 col-12 review-table review-table-detail">
                                         <div class="full p-5">
                                             <?php $i=0; ?>
+                                           
                                             @foreach($data as $d) 
                                                 
                                                 <input type="hidden" value="{{$d['menu']['id']}}" name="id[]">
@@ -117,8 +119,14 @@
                                                 <hr>
                                                 <?php $i++;?>
                                             @endforeach
+                                            <div class="row">
+                                                <div class="col col-md-6">Total</div>
+                                                <div class="col col-md-2"></div>
+                                                <div class="col col-md-3"></div>
+                                                <div class="col col-md-1"></div>
+                                            </div>
                                         </div>
-
+                                      
                                     </div>
                                     <!-- right -->
                                     <div class="col-lg-3 col-12 review-table">
@@ -128,8 +136,8 @@
                                                 here (fee apply)</p>
                                             <p style="color: green">*All items are excluding GST, You have to pay the GST at the time of payment</p>
                                         </div>
-                                        <div class="button text-center mt-5">
-                                            <a class="btn btn-add-more w-80" href="{{ url('catering/breakfast') }}">ADD MORE </a>
+                                        <div class="button text-center mt-7 ">
+                                            {{-- <a class="btn btn-add-more w-80" href="{{ url('catering/breakfast') }}">ADD MORE </a> --}}
                                         </div>
                                         <div class="button text-center mt-5">
                                             <button class="btn btn-success view-my-selection-button w-100">CONFIRM

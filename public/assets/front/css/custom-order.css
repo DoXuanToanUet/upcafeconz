@@ -892,6 +892,15 @@ input[type=number]::-webkit-inner-spin-button {
 .double-column-ul ul{
     column-gap: 30px;
 }
+.review-table.review-table-detail .full hr{
+    display: none;
+}
+.review_ul{
+    padding-bottom: 0px;
+}
+.cart-page-title .review-item{
+   font-size: 18px !important;
+}
 @media (max-width:1368px) {
     .dinner-page .card-header-title h4{
         font-size: 22px !important;
