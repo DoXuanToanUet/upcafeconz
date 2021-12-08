@@ -35,6 +35,8 @@ class OrdersController extends Controller
         $orderDetails->name = $order->name;
         $orderDetails->contact = $order->contact;
         $orderDetails->email = $order->email;
+        $orderDetails->contact_person = $order->contact_person;
+        $orderDetails->additional_info = $order->additional_info;
 
         if ($order->order_type == 'delivery') {
             if (!empty($order->apartment)) {

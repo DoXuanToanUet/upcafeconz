@@ -45,7 +45,7 @@
                                         HIGH TEA <small>(Served at Up Cafe only from 11:30am - 2pm)</small>
 
                                     </h2>
-
+                                    <p class="gst-title-more">Price exclude GST</p>
                                 </div>
 
 

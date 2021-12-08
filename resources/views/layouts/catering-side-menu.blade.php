@@ -13,7 +13,7 @@
                         
                         <li class="<?=($option == 'lunch') ? 'active-first' : '' ?> mt-3"><a href="{{ url('/catering/lunch') }}"><span>LUNCH</span></a></li>
                         @if($option == 'lunch')
-                        <li class="<?= ($option == 'lunch') ? 'active-first' : '' ?> mt-1 main-option"><a href="javascript:void(0);"> &nbsp;<span class="additional">ADDITIONAL OPTIONS</span></a></li>
+                        <li class="<?=($option == 'lunch') ? 'active-first' : '' ?> mt-1 main-option"><a href="javascript:void(0);"> &nbsp;<span class="additional">ADDITIONAL OPTIONS</span></a></li>
                         @endif
                         <li class="<?=($option == 'dinner') ? 'active-first' : '' ?> mt-3"><a href="{{ url('/catering/dinner') }}"> &nbsp;<span>DINNER</span></a></li>
                         @if($option == 'dinner')

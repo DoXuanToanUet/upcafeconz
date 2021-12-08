@@ -937,7 +937,20 @@ input[type=number]::-webkit-inner-spin-button {
     color: #212529;
     opacity: 1;
 } */
-
+.gst-title{
+    bottom: -40px;
+    position: relative;
+    padding-left: 15px;
+}
+.gst-title-more{
+    padding: 10px 0px 0px;
+}
+.contact-form .input input{
+    margin-bottom: 15px;
+}
+.detail-page .fcommon.additional-infomation{
+    height: unset;
+}
 @media (max-width:1368px) {
     .dinner-page .card-header-title h4{
         font-size: 22px !important;
@@ -1178,7 +1191,14 @@ input[type=number]::-webkit-inner-spin-button {
     .dinner-page .additional-section{
         margin-left: 15px !important;
     }
-
+   .tea-page .gst-title{
+        bottom:unset;
+        padding-left: 30px;
+   }
+   .lunch-page .gst-title{
+       padding-left: 30px;
+   }
+ 
 }
 
 @media (min-width: 992px) and (max-width: 1299.99px){
@@ -1305,7 +1325,15 @@ input[type=number]::-webkit-inner-spin-button {
     justify-content: center;
 }
 @media screen and (max-width:575px){
-
+    .gst-title{
+        bottom: unset;
+    }
+    .be-wrapper{
+        padding-top: 0px !important;
+    }
+    .confirm-box-2 .user-group-img, .lunch-page .count-price{
+        text-align: center;
+    }
     .ourcafe_content h2{
 
         font-size: 20px ;
@@ -1454,4 +1482,9 @@ input[type=number]::-webkit-inner-spin-button {
 
     }
 
+}
+@media (min-width: 320px) and (max-width: 480px){
+    #serAndDeli_area .services .icon-content {
+        display: block;
+    }
 }

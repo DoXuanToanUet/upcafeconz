@@ -58,11 +58,9 @@
                                                             <h3 class="<?= ($i==0) ? 'review-main-item':'review-item';?>">
                                                                 {{$d['menu']['name']}}
                                                             </h3>
-                                                            {{-- {{ dd($d['menu']['price']) }} --}}
-                                                            @if($d['menu']['price'] === null || $d['menu']['price'] === 0 )
+                                                            @if( ($d['menu']['grandparent'] != 'dinner' &&$d['menu']['price'] === null) || ($d['menu']['grandparent'] != 'dinner' &&$d['menu']['price'] === 0))
                                                             <b style="font-size: 20px; color: #B0D5B9;">Price to be confirmed</b>
                                                             @endif
-                                                           
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2 user-group-img">
@@ -104,16 +102,16 @@
                                                     <div class="col-12">
                                                         <div class="review_ul">
                                                             {!! $d['menu']['content'] !!}
-                                                            <?php 
-                                                                $itemGrandparent = $d['menu']['grandparent'];
-                                                                $itemParent = $d['menu']['parent'];
-                                                                $itemId =  $d['menu']['id'];
+                                                            {{-- <?php 
+                                                                // $itemGrandparent = $d['menu']['grandparent'];
+                                                                // $itemParent = $d['menu']['parent'];
+                                                                // $itemId =  $d['menu']['id'];
                                                             ?>
                                                             @if ($itemGrandparent === 'breakfast' && $itemParent === 1 || $itemGrandparent === 'lunch' || $itemGrandparent === 'tea' || $itemGrandparent === 'more' &&  $itemId === 157 ||  $itemGrandparent === 'more' &&  $itemId === 168 ||  $itemGrandparent === 'more' &&  $itemId === 169 ||  $itemGrandparent === 'more' &&  $itemId === 170 || $itemGrandparent === 'more' &&  $itemId === 190 || $itemGrandparent === 'more' &&  $itemId === 192 || $itemGrandparent === 'more' &&  $itemId === 193 ||$itemGrandparent === 'more' &&  $itemId === 194    )
                                                                 <p>Individual Packaging (pricing on request) </p>
                                                             @elseif ($itemGrandparent === 'breakfast' && $itemParent === 2 || $itemGrandparent === 'dinner' || $itemGrandparent === 'more' &&  $itemId ===156 )
                                                                 <p>Full Buffet off-site setup (pricing on request) </p>
-                                                            @endif
+                                                            @endif --}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -122,22 +120,22 @@
                                                 <?php $i++;?>
                                             @endforeach
                                             <div class="row" style="margin-top:20px;font-family:CocoSharp">
-                                                <div class="col col-md-6" style="font-size:20px">Total</div>
-                                                <div class="col col-md-2 count-price text-left" style="color:#8ec39b;font-size:20px"></div>
-                                                <div class="col col-md-3 "></div>
-                                                <div class="col col-md-1"></div>
+                                                <div class="col col-md-6 col-sm-6" style="font-size:20px">Total</div>
+                                                <div class="col col-md-2 col-sm-6 count-price text-left " style="color:#8ec39b;font-size:20px"></div>
+                                                <div class="col col-md-3 d-none "></div>
+                                                <div class="col col-md-1 d-none"></div>
                                             </div>
                                         </div>
                                       
                                     </div>
                                     <!-- right -->
                                     <div class="col-lg-3 col-12 review-table">
-                                        <div class="full time p-5">
+                                        {{-- <div class="full time p-5">
                                             <p>Please let us know about special dietary or individual packing
                                                 requirements
                                                 here (fee apply)</p>
                                             <p style="color: green">*All items are excluding GST, You have to pay the GST at the time of payment</p>
-                                        </div>
+                                        </div> --}}
                                         <div class="button text-center mt-7 ">
                                             {{-- <a class="btn btn-add-more w-80" href="{{ url('catering/breakfast') }}">ADD MORE </a> --}}
                                         </div>
@@ -267,8 +265,8 @@
 @section('scripts')
     <script>
 
-        // Count local Price when use choose item
-        getMenuItem = $('.menu-item');
+       // Count local Price when use choose item
+       getMenuItem = $('.menu-item');
         countPrice = [];
         $(getMenuItem).each( function () {
            
@@ -286,6 +284,7 @@
         });
         sumPrice = sumPrice.toFixed(2);
         $('.count-price').html(`$ ${sumPrice} pp`);
+
 
         
     </script>

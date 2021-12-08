@@ -67,24 +67,34 @@ class HomeController extends Controller
 
     public function menu(Request $request){
         Session::forget('catering');
-
-        foreach($request->all() as $d){
-            if($d != $request->_token){
-                if(is_array($d)){
-                    foreach($d as $a){
-                        Session::push('catering', $a);
-                    }
-                } else {
-                    Session::push('catering', $d);
-                }
-            }
-        }
-
+        // dd( $request->requestOptional[0]);
+        // if( isset($request->requestOptional[0] )) {
+        //     $request_optional =  Session::push('create_optional', $request->requestOptional[0]);
+        // }
+        
+        
+        // foreach($request->all() as $d){
+           
+        //     if($d != $request->_token){
+        //         if(is_array($d)){
+        //             foreach($d as $a){
+        //                 dd($a);
+        // Session::push('catering', $request['finger-food']);
+                        
+                        
+        //             }
+        //         } else {
+        //             Session::push('catering', $d);
+        //         }
+        //     }
+        // }
+        // dd(Session::get('catering'));
         return response()->json('success');
     }
 
     public function review(){
         $data = Session::get('catering');
+        // dd($data);
         if($data && isset($data[0]['menu'])){
             return view('review', compact('data'));
         }
@@ -361,13 +371,16 @@ class HomeController extends Controller
         Delivery = 0
     */
     public function detailsPost(Request $request){
+        // dd(1);
         $date_time_parts = explode(' ', $request->date);
         $data = [
             'order' =>  Session::get('catering'),
             'customer' => [
                 'name'      =>  $request->name,
+                'contact_person' => $request->contactPerson,
                 'email'     =>  $request->email,
                 'contact'   =>  $request->contact,
+                'additional_info'=>$request->additionalInfomation,
                 'street'    =>  $request->street,
                 'apartment' =>  $request->apartment,
                 'code'      =>  $request->code,
@@ -377,7 +390,7 @@ class HomeController extends Controller
                 'time'      =>  isset($date_time_parts[1]) ? $date_time_parts[1] : '10:45'
             ]
         ];
-
+        // dd($data['customer']);
         $date_parts = explode('/', $date_time_parts[0]);
 
         $formatted_datetime = $date_parts[2] . '-' . $date_parts[1] . '-' . $date_parts[0] . ' ' . $date_time_parts[1] . ':00';
@@ -385,8 +398,10 @@ class HomeController extends Controller
         try {
             $order = new Order();
             $order->name = $data['customer']['name'];
+            $order->contact_person = $data['customer']['contact_person'];
             $order->email = $data['customer']['email'];
             $order->contact = $data['customer']['contact'];
+            $order->additional_info = $data['customer']['additional_info'];
             $order->date_time = $formatted_datetime;
             $order->order_type = $data['customer']['type'] == 1 ? 'pick up' : 'delivery';
             $order->apartment = $order->order_type == 0 ? $data['customer']['apartment'] : null;

@@ -45,7 +45,7 @@
                                         <small>(All served with a minimum of 7 pieces per person)</small>
 
                                     </h2>
-
+                                    <p class="gst-title-more">Price exclude GST</p>
                                 </div>
 
 

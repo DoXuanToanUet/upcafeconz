@@ -16,6 +16,7 @@
                     <div class="food-section">
                         <div class="container-fluid">
                             <div class="row d-flex align-items-start">
+                            <p class="gst-title">Price exclude GST</p>
                             <div class="col-lg-8 col-md-12 col-12 row">
                                 {{-- {{ dd($data)}} --}}
                                     @if(isset($data) && isset($data['main-options']) && count($data['main-options']) > 0)
@@ -80,7 +81,7 @@
                                                                                             <span class="form-check-label items-name" >
                                                                                                 {{$d->name}}
                                                                                             </span>
-                                                                                            <span class="form-check-label items-price" for="flexCheckDefault" style="color:#8EC39B">
+                                                                                            <span class="form-check-label items-price" for="flexCheckDefault">
                                                                                                 $ <?=number_format($d->price,2)?>
                                                                                             </span>
                                                                                         </div>
@@ -294,7 +295,7 @@
             $body.on('click', '.lunch-check-main', function (event) {
                 $('.setup').hide();
                 $('.setup-'+$(this).val()).show();
-                $()
+                
             });
 
 
@@ -303,7 +304,7 @@
             
             $('body').on('change', '.lunch-check-main', function () {
                 $('.view-my-selection-button').prop('disabled', true);
-                let countCheckbox = 0;
+                let countCheckbox = 1;
                 $(this).closest('.option3-section').find('.additional-section .form-check-input').on('change',function(){
                     if($(this).is(":checked")){
                         countCheckbox=countCheckbox+1;
@@ -334,7 +335,6 @@
                     }
                 })
             })
-            
         });
     </script>
 @endsection

@@ -43,7 +43,7 @@
                                         FUNERAL <small>(minimum order 25 people, individual packaging available)</small>
 
                                     </h2>
-
+                                    <p class="gst-title-more">Price exclude GST</p>
                                 </div>
 
 

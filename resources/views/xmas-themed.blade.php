@@ -45,7 +45,7 @@
                                         <small>(minimum order 10 people)</small>
 
                                     </h2>
-
+                                    <p class="gst-title-more">Price exclude GST</p>
                                 </div>
 
 

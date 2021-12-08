@@ -175,7 +175,7 @@ class CateringController extends Controller
             'vegetarian'    =>  ($request->vegetarian) ? 1 : 0,
             'gluten'        =>  ($request->gluten) ? 1 : 0,
             'vegan'         =>  ($request->vegan) ? 1 : 0,
-            'max_option'    => json_encode( $max_option )
+            'max_option'    => json_encode( $max_option ),s
         ]);
 
         Session::flash('msg', ['Updated', 'success']);

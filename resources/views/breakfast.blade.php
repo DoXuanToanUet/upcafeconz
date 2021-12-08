@@ -9,7 +9,7 @@
     $option = 'breakfast';
 
     ?>
-
+    {{-- {{ dd($data) }} --}}
 
 
     <div class="be-wrapper be-fixed-sidebar be-fixed-sidebar123 breakfast-page" style="background-color: #D1E6D7;">
@@ -43,7 +43,7 @@
                                             <div class="full  left-gray p-5">
 
                                                 <div class="title doll  " style="margin-top: 36px;">
-
+                                                    <p>Price exclude GST</p>
                                                     <h3 class="">
 
                                                         FINGER FOOD
@@ -123,7 +123,22 @@
                                                                 </div>
 
                                                             </div>
-
+                                                              {{-- Section REQUEST (OPTIONAL) --}}
+                                                            <div class="request-optional setup setup-{{$d->id}}">
+                                                                <div class="" style="background:transparent ">
+                                                                    <div class="row">
+                                                                        <div class="col select-title">
+                                                                            <h4 class="card-title-font">REQUEST (OPTIONAL)</h4>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="height " style="margin-top:15px">
+                                                                    <div class="check-1">
+                                                                        <input class="form-check-input request-input" type="checkbox" value="1" id="" name="requestOptional[]"> 
+                                                                        &nbsp; <span>Individual packaging (pricing on request)</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
 
                                                     </div>
@@ -477,65 +492,31 @@
         $(function () {
 
             const $body = $('body');
-
             $body.on('change', '.breakfast', function () {
-
                 $('.breakfast-buffet, .setup-buffet-radio').prop('checked', false);
-
-                $('.breakfast-buffet').closest('.card').find('.setup').hide();
-
-               
-
+                $('.breakfast-buffet').closest('.card').find('.setup').hide();   
             });
 
             $body.on('change', '.breakfast-buffet', function () {
-
                 $('.breakfast').prop('checked', false);
-
             });
 
             $body.on('change', '.form-check-input', function () {
-
                 if ($('.form-check-input:checked').length > 0) {
-
                     if ($('.view-my-selection-button').prop('disabled')) {
-
                         $('.view-my-selection-button').prop('disabled', false);
-
                     }
-
                 } else {
-
                     $('.view-my-selection-button').prop('disabled', true);
-
                 }
-
             });
 
-            $body.on('change','.form-check-input',function(){
-
-                if($(this).is(":checked")) {
-
-                    let count = localStorage.getItem('countCheck');
-
-                    count = parseInt(count);
-
-                    localStorage.setItem('countCheck',count+1)
-
-                    $('.quantity-count').text(count);
-
-                }else{
-
-                    localStorage.setItem('countCheck',count-1)
-
-                    $('.quantity-count').text(count);
-
-                }
-
-            })
-
-          
-
+            // show hide request 
+            $body.on('click', '.check-breakfast', function (event) {
+                $('.setup').hide();
+                $('.setup-'+$(this).val()).show();
+                
+            });
         });
 
     </script>

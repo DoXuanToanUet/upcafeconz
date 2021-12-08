@@ -24,9 +24,11 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Order Date/Time</th>
-                                        <th>Name</th>
+                                        <th>Customer Name</th>
+                                        <th>Contact Person</th>
                                         <th>Contact</th>
                                         <th>Email</th>
+                                        <th>Additional Information</th>
                                         <th>Location</th>
                                         <th>Order Type</th>
                                         <th>Order Value</th>
@@ -56,8 +58,10 @@
                                             <td>#{{ $order->id }}</td>
                                             <td>{{ $order->created_at->format('d-m-Y') . ' ' . $order->created_at->format('h:i A') }}</td>
                                             <td>{{ $order->name }}</td>
+                                            <td>{{ $order->contact_person }}</td>
                                             <td>{{ $order->contact }}</td>
                                             <td>{{ $order->email }}</td>
+                                            <td>{{ $order->additional_info }}</td>
                                             <td>{{ $order->order_type == 'delivery' ? ($order->street . ',' . $order->city) : '' }}</td>
                                             <td>{{ ucfirst($order->order_type) }}</td>
                                             <td>${{ $order->order_value }}</td>
@@ -141,8 +145,12 @@
                             <td id="order-time">27-09-2021 at 10:00 PM</td>
                         </tr>
                         <tr>
-                            <th>Name:</th>
+                            <th>Customer Name:</th>
                             <td id="customer-name">John Doe</td>
+                        </tr>
+                        <tr>
+                            <th>Contact Person:</th>
+                            <td id="contact-person">John Doe</td>
                         </tr>
                         <tr>
                             <th>Contact:</th>
@@ -151,6 +159,10 @@
                         <tr>
                             <th>Email:</th>
                             <td id="customer-email">jd@email.com</td>
+                        </tr>
+                        <tr>
+                            <th>Additional Information:</th>
+                            <td id="additional-info">jd@email.com</td>
                         </tr>
                         <tr>
                             <th>Delivery Address:</th>
@@ -210,8 +222,10 @@
                         $('#order-id').text(data.order_id);
                         $('#order-time').text(data.order_time);
                         $('#customer-name').text(data.name);
-                        $('#customer-contact').text(data.contact);
+                        $('#contact-person').text(data.name);
+                        $('#customer-contact').text(data.contact_person);
                         $('#customer-email').text(data.email);
+                        $('#additional-info').text(data.additional_info);
                         $('#customer-address').text(data.address);
                         $('#delivery-datetime').text(data.datetime);
                         $('#order-details').text(data.order_details);

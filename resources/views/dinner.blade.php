@@ -4,7 +4,7 @@
     <?php
         $option = 'dinner';
     ?>
-
+    {{-- {{ dd($data) }} --}}
     <div class="be-wrapper be-fixed-sidebar be-fixed-sidebar123" style="background-color: #fff;" >
         @include('layouts.checkout-heading', ['currentPage' => $currentPage ?? null])
         @include('layouts.catering-side-menu')
@@ -43,7 +43,10 @@
                     <div class="food-section">
                         <div class="container-fluid">
                             <div class="row">
+                                
                                 <div class="col-lg-8 col-md-12 col-12 row">
+                                    <p class="gst-title">Price exclude GST</p>
+                                   
                                     @if(isset($data) && isset($data['main-options']) && count($data['main-options']) > 0)
                                         <?php
                                             $count = count($data['main-options']) / 2;
@@ -277,10 +280,17 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            
+                                                                            {{-- {{ dd($data) }} --}}
+                                                                            <div class="head" style="background-color: #F4F4F4; margin-bottom:20px;">
+                                                                                <div class="row">
+                                                                                    <div class="col select-title">
+                                                                                        <h4 class="card-title-font">SETUP</h4>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                             @foreach($data['setup'] as $s)
-                                                                                @if(($data['main-options'][$i]['name'] == 'Dinner | Option 1' && ($s->name == '1. FULL BUFFET SETUP P/Person' || $s->name == '1. SERVES IN DISPOSABLE FOIL TRAY P/Person')) || 
-                                                                                ($data['main-options'][$i]['name'] == 'Dinner | Option 2' && ($s->name == '2. FULL BUFFET SETUP P/Person' || $s->name == '2. SERVES IN DISPOSABLE FOIL TRAY P/Person')))
+                                                                                @if(($data['main-options'][$i]['name'] == 'Dinner  Option 1' && ($s->name == '1. FULL BUFFET SETUP P/Person' || $s->name == '1. SERVES IN DISPOSABLE FOIL TRAY P/Person')) || 
+                                                                                ($data['main-options'][$i]['name'] == 'Dinner  Option 2' && ($s->name == '2. FULL BUFFET SETUP P/Person' || $s->name == '2. SERVES IN DISPOSABLE FOIL TRAY P/Person')))
                                                                                     <div class="selection" style="justify-content: space-between; align-items: center; margin-bottom: 10px;">
                                                                                         <span class="selection-name" style="font-size: 18px; font-weight: 500; color: #8EC39B; text-transform: uppercase;">{{$s->name}}</span>
                                                                                         <span class="price-span">$ <?=number_format($s->price,2)?></span>
@@ -289,6 +299,23 @@
                                                                                     </div>
                                                                                 @endif
                                                                             @endforeach
+
+                                                                              {{-- Section REQUEST (OPTIONAL) --}}
+                                                                            <div class="request-optional option3-section dinner">
+                                                                                <div class="head" style="background-color: #F4F4F4; ">
+                                                                                    <div class="row">
+                                                                                        <div class="col select-title">
+                                                                                            <h4 class="card-title-font">REQUEST (OPTIONAL)</h4>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="height p-5">
+                                                                                    <div class="check-1">
+                                                                                        <input class="form-check-input request-input" type="checkbox" value="1" id="flexCheckDefault" name="requestOptional[]"> 
+                                                                                        &nbsp; <span>Individual packaging (pricing on request</span></div>
+                                                                                </div>
+                                                                            </div>
+                                                                            
                                                                             <div class="main-selction-4  pb-5 mt-6">
                                                                                 <div class="button text-center ">
                                                                                     <button type="submit" class="btn btn-outline-success view-my-selection-button" disabled> VIEW MY SELECTION</button>
@@ -529,9 +556,17 @@
                                                                         </div>
                                                                     </div>
                                                                     {{-- <h4 class="text-center p-2" style="font-size: 26px; line-height: 45px;">PLEASE SELECT</h4> --}}
+                                                                    {{-- section setup --}}
+                                                                    <div class="head" style="background-color: #F4F4F4; margin-bottom:20px;">
+                                                                        <div class="row">
+                                                                            <div class="col select-title">
+                                                                                <h4 class="card-title-font">SETUP</h4>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                     @foreach($data['setup'] as $s)
-                                                                        @if(($data['main-options'][$i]['name'] == 'Dinner | Option 3' && ($s->name == '3. FULL BUFFET SETUP P/Person' || $s->name == '3. SERVES IN DISPOSABLE FOIL TRAY P/Person')) || 
-                                                                                ($data['main-options'][$i]['name'] == 'Dinner | Option 4' && ($s->name == '4. FULL BUFFET SETUP P/Person' || $s->name == '4. SERVES IN DISPOSABLE FOIL TRAY P/Person')))
+                                                                        @if(($data['main-options'][$i]['name'] == 'Dinner Option 3' && ($s->name == '3. FULL BUFFET SETUP P/Person' || $s->name == '3. SERVES IN DISPOSABLE FOIL TRAY P/Person')) || 
+                                                                                ($data['main-options'][$i]['name'] == 'Dinner Option 4' && ($s->name == '4. FULL BUFFET SETUP P/Person' || $s->name == '4. SERVES IN DISPOSABLE FOIL TRAY P/Person')))
                                                                             <div class="selection" style="justify-content: space-between; align-items: center; margin-bottom: 10px;">
                                                                                 <span class="selection-name" style="font-size: 18px; font-weight: 500; color: #8EC39B; text-transform: uppercase;">{{$s->name}}</span>
                                                                                 <span class="price-span">$ <?=number_format($s->price,2)?></span>
@@ -540,6 +575,24 @@
                                                                             </div>
                                                                         @endif
                                                                     @endforeach
+                                                                    
+                                                                    {{-- Section REQUEST (OPTIONAL) --}}
+                                                                    <div class="request-optional option3-section dinner">
+                                                                        <div class="head" style="background-color: #F4F4F4; ">
+                                                                            <div class="row">
+                                                                                <div class="col select-title">
+                                                                                    <h4 class="card-title-font">REQUEST (OPTIONAL)</h4>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="height p-5">
+                                                                            <div class="check-1">
+                                                                                <input class="form-check-input request-input" type="checkbox" value="1" id="flexCheckDefault" name="requestOptional[]"> 
+                                                                                &nbsp; <span>Individual packaging (pricing on request</span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+
                                                                     <div class="main-selction-4  pb-5 mt-6">
                                                                         <div class="button text-center ">
                                                                             <button type="submit" class="btn btn-outline-success view-my-selection-button" disabled> VIEW MY SELECTION</button>
@@ -708,6 +761,6 @@
         countSelectDinner('.seafood-option input[type="checkbox"]');
         countSelectDinner('.salad-option input[type="checkbox"]');
         countSelectDinner('.sweet-option input[type="checkbox"]'); 
-        
+                                          
     </script>
 @endsection

@@ -44,7 +44,7 @@
     <section id="serAndDeli_area">
         <div class="container-fluid d-flex">
             <div class="row justify-content-center row2">
-                <div class="col-3">
+                <div class="col col-lg-3 col-12">
                     <div class="text-center services">
                         <div class="img-icon">
                             <img src="images/serviceIcon (1).png" alt="27/7">
@@ -52,7 +52,7 @@
                         <p class="icon-content">Online Ordering</p>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col col-lg-3 col-12">
                     <div class="text-center services">
                         <div class="img-icon">
                             <img src="images/serviceIcon (2).png" alt="delivery">
@@ -60,7 +60,7 @@
                         <p class="icon-content">Delivery Available</p>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col col-lg-3 col-12">
                     <div class="text-center services">
                         <div class="img-icon">
                             <img src="images/serviceIcon (4).png" alt="review">
@@ -68,7 +68,7 @@
                         <p class="icon-content">Trusted</p>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col col-lg-3 col-12">
                     <div class="text-center services">
                         <div class="img-icon">
                             <img src="images/serviceIcon (5).png" alt="sunIcon">
@@ -270,7 +270,7 @@
 
                             <div class="model_img1">
 
-                                    <div class="catering-menu-image" style="background-image: url(images/catering/island.jpg);">
+                                    <div class="catering-menu-image" style="background-image: url(images/catering/IslandCatering.jpg);">
                                     </div>
 
                                 <div class="manu_overley">
@@ -285,7 +285,7 @@
                                         <i class="fa-solid fa-xmark btn-close-catering-modal"data-bs-dismiss="modal" aria-label="Close"></i>
                                         <div class="modal-body p-0 bg-dark">
                                             <div class="text-center">
-                                                <img src="{{asset('images/catering/island.jpg')}}" class="img-fluid">
+                                                <img src="{{asset('images/catering/IslandCatering.jpg')}}" class="img-fluid">
                                             </div>
                                         </div>
 

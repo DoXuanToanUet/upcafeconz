@@ -16,6 +16,7 @@
                     <div class="food-section">
                         <div class="container-fluid">
                             <div class="row d-flex flex-wrap align-items-end">
+                                <p class="gst-title">Price exclude GST</p>
                                 <div class="col-lg-8 col-md-12 col-12 row">
                                     @if(isset($data) && isset($data['main-options']) && count($data['main-options']) > 0)
                                         <?php

@@ -162,7 +162,7 @@
     <?php
     $is_active = 'details';
     ?>
-
+    {{-- {{ dd($data) }} --}}
     <div class="be-wrapper be-fixed-sidebar detail-page" style="background-color: white">
         @include('layouts.checkout-heading')
 
@@ -194,22 +194,32 @@
                             <input type="hidden" name="date" class="selected-date">
                             <input type="hidden" name="detail-method" >
                             <div class="col-lg-4 col-12 review-table">
-                                <div class="full p-4 pb-4 full why-just min-heigh ">
+                                <div class="full p-4 pb-4 full why-just min-heigh contact-form">
                                     <h4 class="text-center pb-3">We just need a few more
                                         details.</h4>
                                     <div class="input m-auto text-center">
-                                        <input type="text" class="form-control mx-auto fcommon" placeholder="Name" name="name" required>
+                                        <input type="text" class="form-control mx-auto fcommon" placeholder="Customer Name" name="name" required>
                                          {{-- <p class="error-mess">Error message</p> --}}
                                     </div>
-                                    <div class="input m-auto py-2 text-center">
+                                    <div class="input m-auto  text-center">
+                                        <input type="text" class="form-control mx-auto fcommon" placeholder="Contact Person" name="contactPerson"   >
+                                        {{-- <p class="error-mess">Error message<</p> --}}
+                                    </div>
+                                    <div class="input m-auto  text-center">
                                         <input type="number" class="form-control mx-auto fcommon" placeholder="Mobile Number" name="contact" required  >
                                         {{-- <p class="error-mess">Error message<</p> --}}
                                     </div>
-                                    <div class="input m-auto text-center">
+                                    <div class="input m-auto  text-center">
                                         <input type="email" class="form-control mx-auto fcommon" placeholder="Email" name="email" required>
                                         {{-- <p class="error-mess ">Error message<</p>     --}}
                                     </div>
-                                <p class="note-info">Please note, all orders must be made 48-hours in advance of your event.</p> 
+                                    <div class="input m-auto  text-center">
+                                        {{-- <input type="textarea" class="form-control mx-auto fcommon" placeholder="Additional Information" name="additional-infomation" > --}}
+                                        <textarea name="additionalInfomation" class="form-control mx-auto fcommon additional-infomation"  placeholder="Additional Information" rows="4" cols="3"></textarea>
+                                        {{-- <p class="error-mess ">Error message<</p>     --}}
+                                    </div>
+                                <p class="note-info">IMPORTANT NOTE: All orders must be made 48 hours in advance of your event.
+                                    Confirmation is subject to availability and upon payment</p> 
                             </div>
                     </div>
                     <div class="col-lg-8 col-12 all-ok delivery-pickup review-table ">
@@ -240,21 +250,21 @@
                                         <div class="caridt">
                                             <div>
                                                 <input type="text" name="street" id="ship-address" class="form-control"
-                                                       autocomplete="off" placeholder="Street">
+                                                       autocomplete="off" placeholder="Street 1">
                                             </div>
                                         </div>
                                         <div class="caridt">
                                             <div class="mt-1">
                                                 <input type="text" name="apartment" id="address2" class="form-control"
-                                                       placeholder="Level/Apt">
+                                                       placeholder="Street 2">
                                             </div>
-                                            <!-- <div class="mt-1">
+                                            <div class="mt-1">
                                                 <input type="text" name="city" id="locality" class="form-control"
-                                                       placeholder="City">
-                                            </div> -->
+                                                       placeholder="Suburb">
+                                            </div> 
                                             <div class="mt-1" style="display:flex">
                                                 <input type="text" name="code" id="postcode" class="form-control"
-                                                       placeholder="Postal code" style="flex:1">
+                                                       placeholder="Postal Code City" style="flex:1">
                                                 <div style="flex:1; border:1px solid #000; color:#1b1a19; display:flex;align-items: center;justify-content:center;height:60px;font-size:20px;margin-left:10px;">Auckland</div>
                                             </div>
                                             <p class="delivery-text">Delivery fee applies.</p>

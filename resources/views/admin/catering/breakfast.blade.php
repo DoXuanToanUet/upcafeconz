@@ -403,6 +403,7 @@
                                 <input type="checkbox" class="form-check-input" value="1" name="vegan">Vegan
                             </label>
                         </div>
+						
                     </div>
 				</div>
 			</div>

@@ -47,7 +47,7 @@
                                         GRAZE <small>(minimum order 25 people, pricing available on request)</small>
 
                                     </h2>
-
+                                    <p class="gst-title-more">Price exclude GST</p>
                                 </div>
 
 
