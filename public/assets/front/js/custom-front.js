@@ -210,13 +210,16 @@ function checkNoneSelect(input){
 $(document).on('click', '.lunch-check-main', function () {
    
     if($(this).is(":checked")) {
-        $('.check-lunch-input').parent().parent().parent().parent().parent().removeClass('border-custom');
+        $('.lunch-check-main').parent().parent().parent().parent().parent().removeClass('border-custom');
         $(this).parent().parent().parent().parent().parent().toggleClass('border-custom');
         // $('#menu').trigger("reset");
         $('.form-check-input').prop("disabled",false);
         $('.form-check-input.lunch-check-input').prop("checked",false);
-        console.log("lunch input")
-    
+        // console.log("lunch input")
+        // Option 1 with id 209 
+        // $(this).closest('.option3-section').find('.dinner-bavver1 .lunch-free-209 input[type="checkbox"]').prop("checked",true)
+        // $(this).closest('.option3-section').find('.dinner-bavver2 .lunch-free-210 input[type="checkbox"]').prop("checked",true)
+        // $(this).closest('.option3-section').find('.dinner-bavver3 .lunch-free-211 input[type="checkbox"]').prop("checked",true)
     }
 
 })

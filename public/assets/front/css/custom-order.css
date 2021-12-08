@@ -901,6 +901,43 @@ input[type=number]::-webkit-inner-spin-button {
 .cart-page-title .review-item{
    font-size: 18px !important;
 }
+.lunch-page .dinner-bavver{
+    display: flex;
+    flex-direction: column-reverse;
+}
+.lunch-page .dinner-bavver1 .lunch-free-210,.lunch-page .dinner-bavver1 .lunch-free-211{
+    display: none;
+}
+.lunch-page .dinner-bavver2 .lunch-free-209,.lunch-page .dinner-bavver2 .lunch-free-211{
+    display: none;
+}
+.lunch-page .dinner-bavver3 .lunch-free-209,.lunch-page .dinner-bavver3 .lunch-free-210{
+    display: none;
+}
+.confirm-box-2 .user-group-img,.lunch-page .count-price{
+    text-align: left;
+
+}
+/* .lunch-page .dinner-bavver1 .lunch-free-209 input
+,.lunch-page .dinner-bavver2 .lunch-free-210 input
+,.lunch-page .dinner-bavver3 .lunch-free-211 input
+{
+    display: none;
+}
+.lunch-page .dinner-bavver1 .lunch-free-209 .form-check-input:disabled
+,.lunch-page .dinner-bavver2 .lunch-free-210 .form-check-input:disabled
+,.lunch-page .dinner-bavver3 .lunch-free-211 .form-check-input:disabled
+{
+    opacity: 1;
+}
+.lunch-page .dinner-bavver1 .lunch-free-209 .form-check-input:disabled~.form-check-label
+,.lunch-page .dinner-bavver2 .lunch-free-210 .form-check-input:disabled~.form-check-label
+,.lunch-page .dinner-bavver3 .lunch-free-211 .form-check-input:disabled~.form-check-label
+{
+    color: #212529;
+    opacity: 1;
+} */
+
 @media (max-width:1368px) {
     .dinner-page .card-header-title h4{
         font-size: 22px !important;

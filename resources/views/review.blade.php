@@ -48,7 +48,7 @@
                                     <div class="col-lg-9 col-12 review-table review-table-detail">
                                         <div class="full p-5">
                                             <?php $i=0; ?>
-                                           
+                                            {{-- {{ dd($data) }} --}}
                                             @foreach($data as $d) 
                                                 
                                                 <input type="hidden" value="{{$d['menu']['id']}}" name="id[]">
@@ -58,9 +58,11 @@
                                                             <h3 class="<?= ($i==0) ? 'review-main-item':'review-item';?>">
                                                                 {{$d['menu']['name']}}
                                                             </h3>
-                                                            @if($d['menu']['price'] == null || $d['menu']['price'] == 0)
+                                                            {{-- {{ dd($d['menu']['price']) }} --}}
+                                                            @if($d['menu']['price'] === null || $d['menu']['price'] === 0 )
                                                             <b style="font-size: 20px; color: #B0D5B9;">Price to be confirmed</b>
                                                             @endif
+                                                           
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2 user-group-img">
@@ -121,7 +123,7 @@
                                             @endforeach
                                             <div class="row" style="margin-top:20px;font-family:CocoSharp">
                                                 <div class="col col-md-6" style="font-size:20px">Total</div>
-                                                <div class="col col-md-2 count-price text-center " style="color:#8ec39b;font-size:20px"></div>
+                                                <div class="col col-md-2 count-price text-left" style="color:#8ec39b;font-size:20px"></div>
                                                 <div class="col col-md-3 "></div>
                                                 <div class="col col-md-1"></div>
                                             </div>
@@ -269,15 +271,20 @@
         getMenuItem = $('.menu-item');
         countPrice = [];
         $(getMenuItem).each( function () {
+           
             menuItem = parseFloat( $(this).html() );
             countPrice.push(menuItem);
+            
         })
-        
+        $(getMenuItem).each( function () { 
+            menuItem = parseFloat( $(this).html() );
+           $(this).html(menuItem.toFixed(2));
+        })
         sumPrice = 0;
         countPrice.forEach(item => {
             sumPrice = sumPrice + item;
         });
-        
+        sumPrice = sumPrice.toFixed(2);
         $('.count-price').html(`$ ${sumPrice} pp`);
 
         

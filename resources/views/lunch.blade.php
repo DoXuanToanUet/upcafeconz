@@ -64,7 +64,7 @@
                                                                     @if(isset($data) && isset($data['salad']) && count($data['salad']) > 0) 
                                                                         <div class="additional-section">
                                                                             <div class="full  pb-5" style="background-color: white; margin:0px 30px;">
-                                                                                <div class="bever dinner-bavver" style="margin-top: 12px;">
+                                                                                <div class="bever dinner-bavver dinner-bavver{{ $i+1 }}" style="margin-top: 12px;">
                                                                                     <div class="row">
                                                                                         {{-- <div class="col-md-10 p-0">
                                                                                             <h3 style="font-weight: bold;">SALAD OPTIONS</h3>
@@ -75,14 +75,14 @@
                                                                                     </div>
                         
                                                                                     @foreach($data['salad'] as $d)
-                                                                                        <div class="form-check mt-5">
+                                                                                        <div class="form-check mt-5 lunch-free-{{ $d->id }}">
                                                                                             <input class="form-check-input lunch-check-input" type="checkbox" value="{{$d->id}}" id="flexCheckDefault" name="salad[]">
-                                                                                            <label class="form-check-label items-name" for="flexCheckDefault">
+                                                                                            <span class="form-check-label items-name" >
                                                                                                 {{$d->name}}
-                                                                                            </label>
-                                                                                            <label class="form-check-label items-price" for="flexCheckDefault">
+                                                                                            </span>
+                                                                                            <span class="form-check-label items-price" for="flexCheckDefault" style="color:#8EC39B">
                                                                                                 $ <?=number_format($d->price,2)?>
-                                                                                            </label>
+                                                                                            </span>
                                                                                         </div>
                         
                                                                                     @endforeach
@@ -299,17 +299,18 @@
 
 
             // Event choose 1 select
-            var countCheckbox = 0;
+           
             
             $('body').on('change', '.lunch-check-main', function () {
                 $('.view-my-selection-button').prop('disabled', true);
+                let countCheckbox = 0;
                 $(this).closest('.option3-section').find('.additional-section .form-check-input').on('change',function(){
                     if($(this).is(":checked")){
                         countCheckbox=countCheckbox+1;
                     }else{
                         countCheckbox=countCheckbox-1;
                     }
-                    console.log(countCheckbox)
+                    // console.log(countCheckbox)
                     if ( countCheckbox >= 1   ) {
                         
                         if ($('.view-my-selection-button').prop('disabled')) {
@@ -333,6 +334,7 @@
                     }
                 })
             })
+            
         });
     </script>
 @endsection
