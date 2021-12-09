@@ -179,6 +179,12 @@ $(document).on('click', '.check-breakfast', function () {
     }
 })
 
+$(document).on('click', '.check-tea,.check-funeral,.check-breakfast,.check-dinner-input', function () {
+    if($(this).is(":checked")) {
+        $('.form-check-input').prop("disabled",false);
+        $('.form-check-input.request-input').prop("checked",false);
+    }
+})
 $(document).on('click', '.setup-breakfast-radio', function () {
     if($(this).is(":checked")) {
         $('.setup-breakfast-radio').parent().removeClass('border-background');

@@ -67,28 +67,19 @@ class HomeController extends Controller
 
     public function menu(Request $request){
         Session::forget('catering');
-        // dd( $request->requestOptional[0]);
-        // if( isset($request->requestOptional[0] )) {
-        //     $request_optional =  Session::push('create_optional', $request->requestOptional[0]);
-        // }
         
-        
-        // foreach($request->all() as $d){
-           
-        //     if($d != $request->_token){
-        //         if(is_array($d)){
-        //             foreach($d as $a){
-        //                 dd($a);
-        // Session::push('catering', $request['finger-food']);
-                        
-                        
-        //             }
-        //         } else {
-        //             Session::push('catering', $d);
-        //         }
-        //     }
-        // }
-        // dd(Session::get('catering'));
+        foreach($request->all() as $d){
+            if($d != $request->_token){
+                if(is_array($d)){
+                    foreach($d as $a){
+                        Session::push('catering', $a);
+                    }
+                } else {
+                    Session::push('catering', $d);
+                }
+            }
+        }
+
         return response()->json('success');
     }
 
@@ -468,8 +459,6 @@ class HomeController extends Controller
 
         return response()->json('success');
     }
-
-
 
     public function deleteMenu(Request $request){
         $data = Session::get('catering');

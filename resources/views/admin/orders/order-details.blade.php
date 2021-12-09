@@ -222,8 +222,8 @@
                         $('#order-id').text(data.order_id);
                         $('#order-time').text(data.order_time);
                         $('#customer-name').text(data.name);
-                        $('#contact-person').text(data.name);
-                        $('#customer-contact').text(data.contact_person);
+                        $('#contact-person').text(data.contact_person);
+                        $('#customer-contact').text(data.contact);
                         $('#customer-email').text(data.email);
                         $('#additional-info').text(data.additional_info);
                         $('#customer-address').text(data.address);

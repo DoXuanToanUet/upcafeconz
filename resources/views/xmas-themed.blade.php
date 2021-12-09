@@ -91,24 +91,17 @@
                                                     </div>
 
                                                 </div>
-
                                                 <div class="card-body p-4">
-
                                                     {!! $xmas->content !!}
-
-
-
                                                     @if(array_key_exists('xmas-themed-' . Str::slug($xmas->name, '-') . '-setup', $data))
-
                                                         @foreach($data['xmas-themed-' . Str::slug($xmas->name, '-') . '-setup'] as $setup)
-
                                                             <div class="selection selection-xmas xmas-{{ $xmas->id }} d-none"
 
                                                                  style="justify-content: space-between; align-items: center; margin-bottom: 10px;">
 
-                                                    <span class="selection-name"
+                                                                <span class="selection-name"
 
-                                                          style="font-size: 16px; color: #000; text-transform:capitalize;">{!! $setup->name !!}</span>
+                                                                    style="font-size: 16px; color: #000; text-transform:capitalize;">{!! $setup->name !!}</span>
 
                                                                 <span class="price-span">$ {!! number_format($setup->price, 2) !!} pp</span>
 
@@ -121,9 +114,29 @@
                                                                        name="xmas-themed-setup">
 
                                                             </div>
-
+                                                            @if($setup->name == 'Individual Packaging (pricing on request)') 
+                                                                {{-- Section REQUEST (OPTIONAL) --}}
+                                                                <div class="selection selection-xmas xmas-{{ $xmas->id }} d-none" style="">
+                                                                    <div class="request-optional"> 
+                                                                        <div class="" style="background:transparent ">
+                                                                            <div class="row">
+                                                                                <div class="col select-title">
+                                                                                    <h4 class="card-title-font">Request:</h4>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="height " style="margin-top:15px">
+                                                                            <div class="check-1">
+                                                                                <input class="form-check-input setup-buffet-radio funeral-setup"  type="radio"  value="{{ $setup->id }}" id="flexCheckDefault" name="funeral-setup"> 
+                                                                                <span class="price-on-request" style="padding-left: 10px">Individual packaging (pricing on request)</span>
+                                                                                {{-- <span>{{ $d->name }}</span> --}}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            @endif  
                                                         @endforeach
-
+                                                       
                                                     @endif
 
 

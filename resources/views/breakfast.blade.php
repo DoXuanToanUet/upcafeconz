@@ -125,19 +125,25 @@
                                                             </div>
                                                               {{-- Section REQUEST (OPTIONAL) --}}
                                                             <div class="request-optional setup setup-{{$d->id}}">
-                                                                <div class="" style="background:transparent ">
-                                                                    <div class="row">
-                                                                        <div class="col select-title">
-                                                                            <h4 class="card-title-font">REQUEST (OPTIONAL)</h4>
+                                                                
+                                                                @foreach($data['additional-options'] as $d)
+                                                                    @if($d->name == 'Individual Packaging (pricing on request)')
+                                                                    <div class="" style="background:transparent ">
+                                                                        <div class="row">
+                                                                            <div class="col select-title">
+                                                                                <h4 class="card-title-font">REQUEST (OPTIONAL)</h4>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="height " style="margin-top:15px">
-                                                                    <div class="check-1">
-                                                                        <input class="form-check-input request-input" type="checkbox" value="1" id="" name="requestOptional[]"> 
-                                                                        &nbsp; <span>Individual packaging (pricing on request)</span>
-                                                                    </div>
-                                                                </div>
+                                                                        <div class="height " style="margin-top:15px">
+                                                                            <div class="check-1">
+                                                                                <input class="form-check-input request-input" type="checkbox" value="{{ $d->id }}" id="" name="requestOptional[]"> 
+                                                                                {{-- <span>Individual packaging (pricing on request)</span> --}}
+                                                                                <span>{{ $d->name }}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    @endif
+                                                                @endforeach
                                                             </div>
                                                         </div>
 
@@ -272,59 +278,27 @@
                                                                  style="background: #fff">
 
                                                                 <div class="if-select-buffet">  @foreach($data['setup'] as $s)
-
-
-
                                                                         <div class="selection"
-
                                                                              style="justify-content: space-between; align-items: center; margin-bottom: 10px;">
-
                                                                             <span class="selection-name"
-
                                                                                   style="font-size: 18px; color: #8EC39B; text-transform: uppercase;">{{$s->name}}</span>
-
                                                                             <span class="price-span">$ {{ number_format($s->price, 2) }}</span>
-
                                                                             <input class="form-check-input setup-buffet-radio setup-breakfast-radio"
-
                                                                                    type="radio" value="{{$s->id}}"
-
                                                                                    id="flexCheckDefault" name="setup">
-
-
-
-
-
                                                                         </div>
-
-
-
-
-
                                                                     @endforeach
-
                                                                 </div>
-
+                                                                <p style="padding:15px">Full buffet off site set up (pricing available on request)</p>
                                                             </div>
-
-
-
                                                         </div>
-
                                                     @endif
-
                                             </div>
-
                                             @endforeach
-
                                         </div>
-
                                     </div>
-
                                 </div>
-
                     </div>
-
                 @endif
 
                 <!-- 3rd column -->
@@ -358,24 +332,25 @@
 
 
                                             @foreach($data['additional-options'] as $d)
+                                                @if($d->name != 'Individual Packaging (pricing on request)')
+                                                    <div class="form-check mt-5">
 
-                                                <div class="form-check mt-5">
+                                                        <input class="form-check-input" type="checkbox" value="{{$d->id}}" id="flexCheckDefault" name="beverage[]">
 
-                                                    <input class="form-check-input" type="checkbox" value="{{$d->id}}" id="flexCheckDefault" name="beverage[]">
+                                                        <label class="form-check-label items-name" for="flexCheckDefault">
+                                                            
+                                                            {{$d->name}}
+                                                        
+                                                        </label>
 
-                                                    <label class="form-check-label items-name" for="flexCheckDefault">
+                                                        <label class="form-check-label items-price" for="flexCheckDefault">
 
-                                                        {{$d->name}}
+                                                            $ <?=number_format($d->price,2)?>
 
-                                                    </label>
+                                                        </label>
 
-                                                    <label class="form-check-label items-price" for="flexCheckDefault">
-
-                                                        $ <?=number_format($d->price,2)?>
-
-                                                    </label>
-
-                                                </div>
+                                                    </div>
+                                                @endif
 
                                             @endforeach
 

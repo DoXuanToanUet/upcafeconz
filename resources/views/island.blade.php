@@ -1,16 +1,7 @@
 @extends('layouts.app')
-
 @section('title', 'Island')
-
 @section('content')
-
-    <?php
-
-        $option = 'island';
-
-    ?>
-
-
+    <?php $option = 'island'; ?>
 
     <div class="be-wrapper be-fixed-sidebar be-fixed-sidebar123"  style="background-color: #D1E6D7;" >
 
@@ -53,19 +44,11 @@
                                 @foreach($data['island'] as $island)
 
                                     <div class="col-md-4">
-
                                         <div class="title doll mb-5">
-
-
-
                                             <div class="card"
-
                                                  style="margin-top: 15px; border: none; border-radius: 0 !important; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
-
                                                 <div class="card-header p-4 d-flex justify-content-between"
-
                                                      style="border: none !important; background: rgb(232 232 232);">
-
                                                     <h4>{!! $island->name !!} <small>(Minimum order {{ $island->group }}
 
                                                             people)</small></h4>
@@ -97,7 +80,7 @@
                                                         @if(array_key_exists('island-' . Str::slug($island->name, '-') . '-setup', $data))
 
                                                             @foreach($data['island-' . Str::slug($island->name, '-') . '-setup'] as $islandSetup)
-
+                                                                @if($islandSetup->name !='Individual packaging (pricing on request)')
                                                                 <div class="selection selection-island island-{{ $island->id }} d-none"
 
                                                                      style="justify-content: space-between; align-items: center; margin-bottom: 10px;">
@@ -125,27 +108,43 @@
                                                                                name="island-setup">
 
                                                                     @endif
-
-
-
+                                                                 
                                                                 </div>
-
-                                                            @endforeach
-
+                                                                @endif
+                                                                    @if($islandSetup->name == 'Individual packaging (pricing on request)') 
+                                                                        {{-- Section REQUEST (OPTIONAL) --}}
+                                                                        <div class="selection selection-island island-{{ $island->id }} d-none" style="">
+                                                                            <div class="request-optional"> 
+                                                                                <div class="" style="background:transparent ">
+                                                                                    <div class="row">
+                                                                                        <div class="col select-title">
+                                                                                            <h4 class="card-title-font">Request:</h4>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="height " style="margin-top:15px">
+                                                                                    <div class="check-1">
+                                                                                        <input class="form-check-input request-input" type="checkbox" value="{{ $islandSetup->id }}" id=""  name="island-options[]"> 
+                                                                                        <span class="price-on-request">Individual packaging (pricing on request)</span>
+                                                                                        {{-- <span>{{ $d->name }}</span> --}}
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    @endif    
+                                                                @endforeach
+                                                               
                                                         @endif
-
+                                                               
                                                     </div>
-
+                                                    
                                                 </div>
 
                                                 @if(array_key_exists('island-' . Str::slug($island->name, '-') . '-additional-options', $data))
 
                                                     <div class="setup setup-6 setup-buffet-6 setup-island island-{{ $island->id }} d-none"
-
                                                          style="display: block;">
-
-
-
+                                                        <p style="padding:0px 15px">Full buffet off site set up (pricing available on request) </p>
                                                         <h5 class="text-center p-2 fw-bold" style="font-size: 20px;">
 
                                                             ADDITIONAL
@@ -159,29 +158,41 @@
                                                             <div class="if-select-buffet">
 
                                                                 @foreach($data['island-' . Str::slug($island->name, '-') . '-additional-options'] as $additionalOptions)
+                                                                    @if($additionalOptions->name !='Individual Packaging (pricing on request)')
+                                                                        <div class="selection"
 
-                                                                    <div class="selection"
+                                                                            style="justify-content: space-between; align-items: center; margin-bottom: 10px;">
 
-                                                                         style="justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                                                            <span class="selection-name" style="font-size: 18px; color: #8EC39B; text-transform: uppercase;">{!! $additionalOptions->name !!}</span>
 
-                                                        <span class="selection-name"
+                                                                            <span class="price-span">$ {{ number_format($additionalOptions->price, 2) }} pp</span>
 
-                                                              style="font-size: 18px; color: #8EC39B; text-transform: uppercase;">{!! $additionalOptions->name !!}</span>
-
-                                                                        <span class="price-span">$ {{ number_format($additionalOptions->price, 2) }} pp</span>
-
-                                                                        <input class="form-check-input setup-buffet-radio island-options"
-
-                                                                               type="checkbox"
-
-                                                                               value="{{ $additionalOptions->id }}"
-
-                                                                               id="flexCheckDefault"
-
-                                                                               name="island-options[]">
-
-                                                                    </div>
-
+                                                                            <input class="form-check-input setup-buffet-radio island-options"
+                                                                                type="checkbox"
+                                                                                value="{{ $additionalOptions->id }}"
+                                                                                id="flexCheckDefault"
+                                                                                name="island-options[]">
+                                                                        </div>
+                                                                    @endif
+                                                                    @if($additionalOptions->name == 'Individual Packaging (pricing on request)') 
+                                                                         {{-- Section REQUEST (OPTIONAL) --}}
+                                                                        <div class="request-optional" style="padding:15px ">
+                                                                            <div class="" style="background:transparent ">
+                                                                                <div class="row">
+                                                                                    <div class="col select-title">
+                                                                                        <h4 class="card-title-font">Request:</h4>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="height " style="margin-top:15px">
+                                                                                <div class="check-1">
+                                                                                    <input class="form-check-input request-input" type="checkbox" value="{{ $additionalOptions->id }}" id=""  name="island-options[]"> 
+                                                                                    <span class="price-on-request">Individual packaging (pricing on request)</span>
+                                                                                    {{-- <span>{{ $d->name }}</span> --}}
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    @endif
                                                                 @endforeach
 
                                                             </div>
@@ -193,7 +204,7 @@
                                                     </div>
 
                                                 @endif
-
+                                               
                                             </div>
 
                                         </div>

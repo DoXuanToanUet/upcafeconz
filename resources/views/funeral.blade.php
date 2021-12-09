@@ -76,7 +76,7 @@
 
                                                     @endif
 
-                                                    <input class="form-check-input setup-buffet-radio funeral check-more-input"
+                                                    <input class="form-check-input setup-buffet-radio funeral check-more-input check-funeral"
 
                                                            type="radio" value="{{ $funeral->id }}"
 
@@ -85,65 +85,52 @@
                                                 </div>
 
                                                 <div class="card-body p-4">
-
                                                     {!! $funeral->content !!}
-
-                                                    @if(array_key_exists('funeral-option-' . ($key+1) . '-setup', $data))
-
-                                                        @foreach($data['funeral-option-' . ($key+1) . '-setup'] as $setup)
-
-                                                            <div class="selection"
-
-                                                                 style="justify-content: space-between; align-items: center; margin-bottom: 10px;">
-
-                                                <span class="selection-name"
-
-                                                      style="font-size: 16px; color: #000; text-transform:capitalize;">{!! $setup->name !!}</span>
-
-                                                                <span class="price-span">$ {{ number_format($setup->price, 2) }} pp</span>
-
-                                                                <input class="form-check-input setup-buffet-radio funeral-setup "
-
-                                                                       type="radio"
-
-                                                                       value="{{ $setup->id }}" id="flexCheckDefault"
-
-                                                                       name="funeral-setup">
-
-                                                            </div>
-
-                                                        @endforeach
-
-                                                    @endif
-
                                                 </div>
-
+                                                <div class="setup setup-{{ $funeral->id  }}">
+                                                    @if(array_key_exists('funeral-option-' . ($key+1) . '-setup', $data))
+                                                        @foreach($data['funeral-option-' . ($key+1) . '-setup'] as $setup)
+                                                            {{-- <div class="selection" style="justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                                                <span class="selection-name style="font-size: 16px; color: #000; text-transform:capitalize;">{!! $setup->name !!}</span>
+                                                                <span class="price-span">$ {{ number_format($setup->price, 2) }} pp</span>
+                                                                <input class="form-check-input setup-buffet-radio funeral-setup "
+                                                                    type="radio"
+                                                                    value="{{ $setup->id }}" id="flexCheckDefault"
+                                                                    name="funeral-setup">
+                                                            </div> --}}
+                                                            @if($setup->name == 'Individual Packaging (pricing on request)') 
+                                                                {{-- Section REQUEST (OPTIONAL) --}}
+                                                                <div class="selection" style="padding:15px">
+                                                                    <div class="request-optional"> 
+                                                                        <div class="" style="background:transparent ">
+                                                                            <div class="row">
+                                                                                <div class="col select-title">
+                                                                                    <h4 class="card-title-font">Request:</h4>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="height " style="margin-top:15px">
+                                                                            <div class="check-1">
+                                                                                <input class="form-check-input  request-input setup-buffet-radio funeral-setup"  type="radio"  value="{{ $setup->id }}" id="flexCheckDefault" name="funeral-setup"> 
+                                                                                <span class="price-on-request" style="padding-left: 10px">Individual Packaging (pricing on request)</span>
+                                                                                {{-- <span>{{ $d->name }}</span> --}}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            @endif  
+                                                        @endforeach
+                                                    @endif
+                                                </div>
 
 
                                             </div>
 
                                         </div>
-
                                     </div>
-
                                 @endforeach
-
                             </div>
-
-                           
-
-
-
-                            
-
-
-
-
-
                         </div>
-
-
-
                     </div>
 
 
@@ -210,6 +197,11 @@
 
             const $body = $('body');
 
+            $body.on('click', '.funeral', function (event) {
+                $('.setup').hide();
+                $('.setup-'+$(this).val()).show();
+                
+            });
             $body.on('change', '.funeral-setup', function (event) {
 
                 $('.funeral').prop('checked', false);

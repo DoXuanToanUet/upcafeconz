@@ -300,21 +300,27 @@
                                                                                 @endif
                                                                             @endforeach
 
-                                                                              {{-- Section REQUEST (OPTIONAL) --}}
-                                                                            <div class="request-optional option3-section dinner">
-                                                                                <div class="head" style="background-color: #F4F4F4; ">
-                                                                                    <div class="row">
-                                                                                        <div class="col select-title">
-                                                                                            <h4 class="card-title-font">REQUEST (OPTIONAL)</h4>
+                                                                             {{-- Section REQUEST (OPTIONAL) --}}
+                                                                            @if(isset($data) && isset($data['beverage']) && count($data['beverage']) > 0)
+                                                                                @foreach($data['beverage'] as $d)
+                                                                                    @if($d->name == 'Individual Packaging (pricing on request)')
+                                                                                        <div class="request-optional option3-section dinner">
+                                                                                            <div class="head" style="background-color: #F4F4F4; ">
+                                                                                                <div class="row">
+                                                                                                    <div class="col select-title">
+                                                                                                        <h4 class="card-title-font">REQUEST (OPTIONAL)</h4>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="height p-5">
+                                                                                                <div class="check-1">
+                                                                                                    <input class="form-check-input request-input" type="checkbox" value="{{$d->id}}" id="flexCheckDefault" name="beverage[]"> 
+                                                                                                    &nbsp; <span>Individual Packaging (pricing on request)</span></div>
+                                                                                            </div>
                                                                                         </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="height p-5">
-                                                                                    <div class="check-1">
-                                                                                        <input class="form-check-input request-input" type="checkbox" value="1" id="flexCheckDefault" name="requestOptional[]"> 
-                                                                                        &nbsp; <span>Individual packaging (pricing on request</span></div>
-                                                                                </div>
-                                                                            </div>
+                                                                                    @endif
+                                                                                @endforeach
+                                                                            @endif
                                                                             
                                                                             <div class="main-selction-4  pb-5 mt-6">
                                                                                 <div class="button text-center ">
@@ -577,21 +583,26 @@
                                                                     @endforeach
                                                                     
                                                                     {{-- Section REQUEST (OPTIONAL) --}}
-                                                                    <div class="request-optional option3-section dinner">
-                                                                        <div class="head" style="background-color: #F4F4F4; ">
-                                                                            <div class="row">
-                                                                                <div class="col select-title">
-                                                                                    <h4 class="card-title-font">REQUEST (OPTIONAL)</h4>
+                                                                    @if(isset($data) && isset($data['beverage']) && count($data['beverage']) > 0)
+                                                                        @foreach($data['beverage'] as $d)
+                                                                            @if($d->name == 'Individual Packaging (pricing on request)')
+                                                                                <div class="request-optional option3-section dinner">
+                                                                                    <div class="head" style="background-color: #F4F4F4; ">
+                                                                                        <div class="row">
+                                                                                            <div class="col select-title">
+                                                                                                <h4 class="card-title-font">REQUEST (OPTIONAL)</h4>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="height p-5">
+                                                                                        <div class="check-1">
+                                                                                            <input class="form-check-input request-input" type="checkbox" value="{{$d->id}}" id="flexCheckDefault" name="beverage[]"> 
+                                                                                            &nbsp; <span>Individual Packaging (pricing on request)</span></div>
+                                                                                    </div>
                                                                                 </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="height p-5">
-                                                                            <div class="check-1">
-                                                                                <input class="form-check-input request-input" type="checkbox" value="1" id="flexCheckDefault" name="requestOptional[]"> 
-                                                                                &nbsp; <span>Individual packaging (pricing on request</span></div>
-                                                                        </div>
-                                                                    </div>
-                                                                    
+                                                                            @endif
+                                                                        @endforeach
+                                                                    @endif
 
                                                                     <div class="main-selction-4  pb-5 mt-6">
                                                                         <div class="button text-center ">
@@ -625,23 +636,25 @@
                                                             </div>
 
                                                             <div class="row">
-                                                            @foreach($data['beverage'] as $d)
+                                                            @if($d->name !='Individual Packaging (pricing on request)')
+                                                                @foreach($data['beverage'] as $d)
 
-                                                                    <div class="col-md-12">
-                                                                        <div class="form-check ">
-                                                                            <input class="form-check-input" type="checkbox" value="{{$d->id}}" id="flexCheckDefault" name="beverage[]">
-                                                                            <label class="form-check-label items-name" for="flexCheckDefault">
-                                                                                {{$d->name}}
-                                                                            </label>
-                                                                            <label class="form-check-label items-price" for="flexCheckDefault">
-                                                                                $ <?=number_format($d->price,2)?>
-                                                                            </label>
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-check ">
+                                                                                <input class="form-check-input" type="checkbox" value="{{$d->id}}" id="flexCheckDefault" name="beverage[]">
+                                                                                <label class="form-check-label items-name" for="flexCheckDefault">
+                                                                                    {{$d->name}}
+                                                                                </label>
+                                                                                <label class="form-check-label items-price" for="flexCheckDefault">
+                                                                                    $ <?=number_format($d->price,2)?>
+                                                                                </label>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
 
 
 
-                                                            @endforeach
+                                                                @endforeach
+                                                            @endif
                                                             </div>
 
                                                         </div>
