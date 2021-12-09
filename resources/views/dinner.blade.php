@@ -289,8 +289,8 @@
                                                                                 </div>
                                                                             </div>
                                                                             @foreach($data['setup'] as $s)
-                                                                                @if(($data['main-options'][$i]['name'] == 'Dinner  Option 1' && ($s->name == '1. FULL BUFFET SETUP P/Person' || $s->name == '1. SERVES IN DISPOSABLE FOIL TRAY P/Person')) || 
-                                                                                ($data['main-options'][$i]['name'] == 'Dinner  Option 2' && ($s->name == '2. FULL BUFFET SETUP P/Person' || $s->name == '2. SERVES IN DISPOSABLE FOIL TRAY P/Person')))
+                                                                                @if(($data['main-options'][$i]['name'] == 'Dinner Option 1' && ($s->name == '1. FULL BUFFET SETUP P/Person' || $s->name == '1. SERVES IN DISPOSABLE FOIL TRAY P/Person')) || 
+                                                                                ($data['main-options'][$i]['name'] == 'Dinner Option 2' && ($s->name == '2. FULL BUFFET SETUP P/Person' || $s->name == '2. SERVES IN DISPOSABLE FOIL TRAY P/Person')))
                                                                                     <div class="selection" style="justify-content: space-between; align-items: center; margin-bottom: 10px;">
                                                                                         <span class="selection-name" style="font-size: 18px; font-weight: 500; color: #8EC39B; text-transform: uppercase;">{{$s->name}}</span>
                                                                                         <span class="price-span">$ <?=number_format($s->price,2)?></span>

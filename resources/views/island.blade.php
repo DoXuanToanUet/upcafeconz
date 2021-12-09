@@ -80,7 +80,7 @@
                                                         @if(array_key_exists('island-' . Str::slug($island->name, '-') . '-setup', $data))
 
                                                             @foreach($data['island-' . Str::slug($island->name, '-') . '-setup'] as $islandSetup)
-                                                                @if($islandSetup->name !='Individual packaging (pricing on request)')
+                                                                @if($islandSetup->name !='Individual Packaging (pricing on request)')
                                                                 <div class="selection selection-island island-{{ $island->id }} d-none"
 
                                                                      style="justify-content: space-between; align-items: center; margin-bottom: 10px;">
@@ -111,7 +111,7 @@
                                                                  
                                                                 </div>
                                                                 @endif
-                                                                    @if($islandSetup->name == 'Individual packaging (pricing on request)') 
+                                                                    @if($islandSetup->name == 'Individual Packaging (pricing on request)') 
                                                                         {{-- Section REQUEST (OPTIONAL) --}}
                                                                         <div class="selection selection-island island-{{ $island->id }} d-none" style="">
                                                                             <div class="request-optional"> 

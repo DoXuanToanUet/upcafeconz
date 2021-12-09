@@ -58,13 +58,17 @@
                                                             <h3 class="<?= ($i==0) ? 'review-main-item':'review-item';?>">
                                                                 {{$d['menu']['name']}}
                                                             </h3>
-                                                            @if( ($d['menu']['grandparent'] != 'dinner' &&$d['menu']['price'] === null) || ($d['menu']['grandparent'] != 'dinner' &&$d['menu']['price'] === 0))
-                                                            <b style="font-size: 20px; color: #B0D5B9;">Price to be confirmed</b>
+                                                            @if( ($d['menu']['grandparent'] != 'dinner' &&$d['menu']['price'] === null 
+                                                            && $d['menu']['grandparent'] != 'breakfast' && 
+                                                            $d['menu']['name'] != 'Individual Packaging (pricing on request)') 
+                                                            || ($d['menu']['grandparent'] != 'dinner' &&$d['menu']['price'] === 0) 
+                                                            ) 
+                                                                <b style="font-size: 20px; color: #B0D5B9;">Price to be confirmed</b>
                                                             @endif
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2 user-group-img">
-                                                        @if($d['menu']['price'] && $d['menu']['name'] != 'Dinner  Option 1' && $d['menu']['name'] != 'Dinner  Option 2' && $d['menu']['name'] != 'Dinner  Option 3' && $d['menu']['name'] != 'Dinner  Option 4')
+                                                        @if($d['menu']['price'] && $d['menu']['name'] != 'Dinner Option 1' && $d['menu']['name'] != 'Dinner Option 2' && $d['menu']['name'] != 'Dinner Option 3' && $d['menu']['name'] != 'Dinner Option 4')
                                                             <img src="/assets/front/assets/img/green-1.png"
                                                                  style="width: 30px;  transform: translate(-2px, -3px);">
                                                             <span style="color: green;">$ <span class="menu-item">{{ $d['menu']['price'] }}</span> pp</span>

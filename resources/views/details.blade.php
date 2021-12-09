@@ -243,9 +243,9 @@
                                 <div class="stranges p-3">
 {{--                                    <h5 class="mt-5 mb-3 ml-2">Expected time </h5>--}}
                                     <div class="container delivery-address d-none">
-                                        <h5 class="mt-5" style="padding-bottom:30px;">Expected time of delivery</h5>
+                                        <h5 class="mt-5" style="padding-bottom:30px;">Expected day/time of delivery</h5>
                                         <div class="delivery-show-time">
-                                            <p></p>
+                                            <p>Delivery address</p>
                                         </div>
                                         <div class="caridt">
                                             <div>
@@ -267,8 +267,8 @@
                                                        placeholder="Postal Code City" style="flex:1">
                                                 <div style="flex:1; border:1px solid #000; color:#1b1a19; display:flex;align-items: center;justify-content:center;height:60px;font-size:20px;margin-left:10px;">Auckland</div>
                                             </div>
-                                            <p class="delivery-text">Delivery fee applies.</p>
-                                            <p class="delivery-sub-text">No credit card required just yet.</p>
+                                            <p class="delivery-text">Delivery fee applies and payment is not required at this time</p>
+                                            {{-- <p class="delivery-sub-text">No credit card required just yet.</p> --}}
                                         </div>
                                     </div>
                                     <div class="container pickup-address">
