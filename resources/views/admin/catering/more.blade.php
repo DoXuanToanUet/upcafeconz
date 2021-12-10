@@ -978,7 +978,7 @@
 				</div>
 			</div>
 
-			<!-- Xmas Themed -->
+			<!-- Xmas Themed Finger Food Style Setup-->
 			<div class="col-lg-12">
 				<div class="card">
 					<div class="card-header">
@@ -1047,6 +1047,280 @@
 				</div>
 			</div>
 
+			{{-- Xmas Finger Food Style add Package --}}
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="card-header">
+						<h4 class="card-title">Xmas FINGER FOOD STYLE add package</h4>
+						<button type="button" class="btn btn-rounded btn-primary add-catering" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg" data-parent="20">
+							<span class="btn-icon-start text-primary">
+								<i class="fa fa-plus color-primary"></i>
+							</span>
+							Add
+						</button>
+					</div>
+					<div class="card-body">
+						@if(isset($data['xmas-themed-finger-food-style-package']) && count($data['xmas-themed-finger-food-style-package']) > 0)
+							<div class="table-responsive">
+								<table class="table table-responsive-md">
+									<thead>
+									<tr>
+										<th><strong>Name</strong></th>
+										<th><strong>Content</strong></th>
+										<th><strong>Additional</strong></th>
+										<th><strong>Group of People</strong></th>
+										<th><strong>Price per person</strong></th>
+										<th><strong>Action</strong></th>
+									</tr>
+									</thead>
+									<tbody>
+									@foreach($data['xmas-themed-finger-food-style-package'] as $d)
+										<tr>
+											<td>{{$d->name}}</td>
+											<td>{!! $d->content !!}</td>
+											<td>
+												@if($d->vegetarian)
+													Vegetarian,
+												@endif
+												@if($d->gluten)
+													Gluten Free,
+												@endif
+												@if($d->vegan)
+													Vegan
+												@endif
+											</td>
+											<td>{{$d->group}}</td>
+											<td>{{ $d->formatted_price }}</td>
+											<td>
+												<div class="dropdown">
+													<button type="button" class="btn btn-success light sharp" data-bs-toggle="dropdown">
+														<svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="5" cy="12" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="19" cy="12" r="2"/></g></svg>
+													</button>
+													<div class="dropdown-menu">
+														<a href="javascript:void(0)" class="dropdown-item edit-catering" data-bs-toggle="modal" data-bs-target=".edit-catering-modal" data-name="{{$d->name}}" data-content="{{$d->content}}" data-id="{{$d->id}}" data-group="{{$d->group}}" data-price="{{$d->price}}" data-parent="{{$d->parent}}" data-vegetarian="{{$d->vegetarian}}" data-gluten="{{$d->gluten}}" data-vegan="{{$d->vegan}}">Edit</a>
+														<a class="dropdown-item" onclick="destroy({{$d->id}}, '/admin/catering/destroy/{{$d->id}}', '/admin/catering/more');">Delete</a>
+													</div>
+												</div>
+											</td>
+										</tr>
+									@endforeach
+									</tbody>
+								</table>
+							</div>
+						@else
+							<div class="center">
+								No data found.
+							</div>
+						@endif
+					</div>
+				</div>
+			</div>
+			{{--Xmas Themed   Morning Tea  --}}
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="card-header">
+						<h4 class="card-title">Xmas Themed Morning Tea Add Package </h4>
+						<button type="button" class="btn btn-rounded btn-primary add-catering" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg" data-parent="17">
+							<span class="btn-icon-start text-primary">
+								<i class="fa fa-plus color-primary"></i>
+                        	</span>
+							Add
+						</button>
+					</div>
+					<div class="card-body">
+						@if(isset($data['xmas-themed-morning-tea-setup1']) && count($data['xmas-themed-morning-tea-setup1']) > 0)
+							<div class="table-responsive">
+								<table class="table table-responsive-md">
+									<thead>
+									<tr>
+										<th><strong>Name</strong></th>
+										<th><strong>Content</strong></th>
+										<th><strong>Additional</strong></th>
+										<th><strong>Group of People</strong></th>
+										<th><strong>Price per person</strong></th>
+										<th><strong>Action</strong></th>
+									</tr>
+									</thead>
+									<tbody>
+									@foreach($data['xmas-themed-morning-tea-setup1'] as $d)
+										<tr>
+											<td>{{$d->name}}</td>
+											<td>{!! $d->content !!}</td>
+											<td>
+												@if($d->vegetarian)
+													Vegetarian,
+												@endif
+												@if($d->gluten)
+													Gluten Free,
+												@endif
+												@if($d->vegan)
+													Vegan
+												@endif
+											</td>
+											<td>{{$d->group}}</td>
+											<td>{{ $d->formatted_price }}</td>
+											<td>
+												<div class="dropdown">
+													<button type="button" class="btn btn-success light sharp" data-bs-toggle="dropdown">
+														<svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="5" cy="12" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="19" cy="12" r="2"/></g></svg>
+													</button>
+													<div class="dropdown-menu">
+														<a href="javascript:void(0)" class="dropdown-item edit-catering" data-bs-toggle="modal" data-bs-target=".edit-catering-modal" data-name="{{$d->name}}" data-content="{{$d->content}}" data-id="{{$d->id}}" data-group="{{$d->group}}" data-price="{{$d->price}}" data-parent="{{$d->parent}}" data-vegetarian="{{$d->vegetarian}}" data-gluten="{{$d->gluten}}" data-vegan="{{$d->vegan}}">Edit</a>
+														<a class="dropdown-item" onclick="destroy({{$d->id}}, '/admin/catering/destroy/{{$d->id}}', '/admin/catering/more');">Delete</a>
+													</div>
+												</div>
+											</td>
+										</tr>
+									@endforeach
+									</tbody>
+								</table>
+							</div>
+						@else
+							<div class="center">
+								No data found.
+							</div>
+						@endif
+					</div>
+				</div>
+			</div>
+
+			{{-- Xmas Themed  Afternoon Tea --}}
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="card-header">
+						<h4 class="card-title">Xmas Themed Afternoon Tea Add Package</h4>
+						<button type="button" class="btn btn-rounded btn-primary add-catering" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg" data-parent="18">
+							<span class="btn-icon-start text-primary">
+								<i class="fa fa-plus color-primary"></i>
+                        	</span>
+							Add
+						</button>
+					</div>
+					<div class="card-body">
+						@if(isset($data['xmas-themed-afternoon-tea-setup2']) && count($data['xmas-themed-afternoon-tea-setup2']) > 0)
+							<div class="table-responsive">
+								<table class="table table-responsive-md">
+									<thead>
+									<tr>
+										<th><strong>Name</strong></th>
+										<th><strong>Content</strong></th>
+										<th><strong>Additional</strong></th>
+										<th><strong>Group of People</strong></th>
+										<th><strong>Price per person</strong></th>
+										<th><strong>Action</strong></th>
+									</tr>
+									</thead>
+									<tbody>
+									@foreach($data['xmas-themed-afternoon-tea-setup2'] as $d)
+										<tr>
+											<td>{{$d->name}}</td>
+											<td>{!! $d->content !!}</td>
+											<td>
+												@if($d->vegetarian)
+													Vegetarian,
+												@endif
+												@if($d->gluten)
+													Gluten Free,
+												@endif
+												@if($d->vegan)
+													Vegan
+												@endif
+											</td>
+											<td>{{$d->group}}</td>
+											<td>{{ $d->formatted_price }}</td>
+											<td>
+												<div class="dropdown">
+													<button type="button" class="btn btn-success light sharp" data-bs-toggle="dropdown">
+														<svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="5" cy="12" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="19" cy="12" r="2"/></g></svg>
+													</button>
+													<div class="dropdown-menu">
+														<a href="javascript:void(0)" class="dropdown-item edit-catering" data-bs-toggle="modal" data-bs-target=".edit-catering-modal" data-name="{{$d->name}}" data-content="{{$d->content}}" data-id="{{$d->id}}" data-group="{{$d->group}}" data-price="{{$d->price}}" data-parent="{{$d->parent}}" data-vegetarian="{{$d->vegetarian}}" data-gluten="{{$d->gluten}}" data-vegan="{{$d->vegan}}">Edit</a>
+														<a class="dropdown-item" onclick="destroy({{$d->id}}, '/admin/catering/destroy/{{$d->id}}', '/admin/catering/more');">Delete</a>
+													</div>
+												</div>
+											</td>
+										</tr>
+									@endforeach
+									</tbody>
+								</table>
+							</div>
+						@else
+							<div class="center">
+								No data found.
+							</div>
+						@endif
+					</div>
+				</div>
+			</div>
+			{{--  Xmas Themed Lunch  --}}
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="card-header">
+						<h4 class="card-title">Xmas Themed Lunch Add Package</h4>
+						<button type="button" class="btn btn-rounded btn-primary add-catering" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg" data-parent="19">
+							<span class="btn-icon-start text-primary">
+								<i class="fa fa-plus color-primary"></i>
+                        	</span>
+							Add
+						</button>
+					</div>
+					<div class="card-body">
+						@if(isset($data['xmas-themed-lunch-setup3']) && count($data['xmas-themed-lunch-setup3']) > 0)
+							<div class="table-responsive">
+								<table class="table table-responsive-md">
+									<thead>
+									<tr>
+										<th><strong>Name</strong></th>
+										<th><strong>Content</strong></th>
+										<th><strong>Additional</strong></th>
+										<th><strong>Group of People</strong></th>
+										<th><strong>Price per person</strong></th>
+										<th><strong>Action</strong></th>
+									</tr>
+									</thead>
+									<tbody>
+									@foreach($data['xmas-themed-lunch-setup3'] as $d)
+										<tr>
+											<td>{{$d->name}}</td>
+											<td>{!! $d->content !!}</td>
+											<td>
+												@if($d->vegetarian)
+													Vegetarian,
+												@endif
+												@if($d->gluten)
+													Gluten Free,
+												@endif
+												@if($d->vegan)
+													Vegan
+												@endif
+											</td>
+											<td>{{$d->group}}</td>
+											<td>{{ $d->formatted_price }}</td>
+											<td>
+												<div class="dropdown">
+													<button type="button" class="btn btn-success light sharp" data-bs-toggle="dropdown">
+														<svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="5" cy="12" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="19" cy="12" r="2"/></g></svg>
+													</button>
+													<div class="dropdown-menu">
+														<a href="javascript:void(0)" class="dropdown-item edit-catering" data-bs-toggle="modal" data-bs-target=".edit-catering-modal" data-name="{{$d->name}}" data-content="{{$d->content}}" data-id="{{$d->id}}" data-group="{{$d->group}}" data-price="{{$d->price}}" data-parent="{{$d->parent}}" data-vegetarian="{{$d->vegetarian}}" data-gluten="{{$d->gluten}}" data-vegan="{{$d->vegan}}">Edit</a>
+														<a class="dropdown-item" onclick="destroy({{$d->id}}, '/admin/catering/destroy/{{$d->id}}', '/admin/catering/more');">Delete</a>
+													</div>
+												</div>
+											</td>
+										</tr>
+									@endforeach
+									</tbody>
+								</table>
+							</div>
+						@else
+							<div class="center">
+								No data found.
+							</div>
+						@endif
+					</div>
+				</div>
+			</div>
+		
 			<!-- Xmas Themed Sweet Platter Additional Options -->
 			<div class="col-lg-12">
 				<div class="card">

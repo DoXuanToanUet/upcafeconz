@@ -969,6 +969,12 @@ input[type=number]::-webkit-inner-spin-button {
 .xmas-option0 .selection.selection-block,.xmas-option2 .selection.selection-block,.xmas-option3 .selection.selection-block,.xmas-option4 .selection.selection-block{
     display: block !important;
 }
+.graze-none,.graze-diplay,.graze-none .total-wrapper{
+    display: none ;
+}
+.graze-none .graze-diplay{
+    display: block ;
+}
 @media (max-width:1368px) {
     .dinner-page .card-header-title h4{
         font-size: 22px !important;

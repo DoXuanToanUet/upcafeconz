@@ -302,10 +302,11 @@ $(document).on('click', '.xmas-themed', function () {
     if($(this).is(":checked")) {
         // $('.island-options').parent().removeClass('border-background');
         $(this).parent().parent().parent().addClass('border-custom');
-       
+        
         
     } else{
         $(this).parent().parent().parent().removeClass('border-custom');
+        $(this).parent().parent().parent().find('.xmas-themed-options').prop("checked",false);
     }
 })
 

@@ -206,7 +206,9 @@
                                         {{-- <p class="error-mess">Error message<</p> --}}
                                     </div>
                                     <div class="input m-auto  text-center">
-                                        <input type="number" class="form-control mx-auto fcommon" placeholder="Mobile Number" name="contact" required  >
+                                        <input type="number" class="form-control mx-auto fcommon" 
+                                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                        maxlength="12" placeholder="Mobile Number" name="contact" required   >
                                         {{-- <p class="error-mess">Error message<</p> --}}
                                     </div>
                                     <div class="input m-auto  text-center">
@@ -243,7 +245,7 @@
                                 <div class="stranges p-3">
 {{--                                    <h5 class="mt-5 mb-3 ml-2">Expected time </h5>--}}
                                     <div class="container delivery-address d-none">
-                                        <h5 class="mt-5" style="padding-bottom:30px;">Expected day/time of delivery</h5>
+                                        <h5 class="mt-5" style="padding-bottom:30px;">EXPECTED DAY/TIME OF DELIVERY</h5>
                                         <div class="delivery-show-time">
                                             <p>Delivery address</p>
                                         </div>
@@ -267,7 +269,8 @@
                                                        placeholder="Postal Code City" style="flex:1">
                                                 <div style="flex:1; border:1px solid #000; color:#1b1a19; display:flex;align-items: center;justify-content:center;height:60px;font-size:20px;margin-left:10px;">Auckland</div>
                                             </div>
-                                            <p class="delivery-text">Delivery fee applies and payment is not required at this time</p>
+                                            <p class="delivery-text">DELIVERY FEE APPLIES AND PAYMENT IS NOT REQUIRED AT THIS TIME
+                                            </p>
                                             {{-- <p class="delivery-sub-text">No credit card required just yet.</p> --}}
                                         </div>
                                     </div>

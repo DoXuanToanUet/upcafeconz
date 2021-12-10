@@ -219,6 +219,13 @@
                     },
                     success: function (data) {
                         console.log(data);
+                        dataOrderDetail = data.order_details.split(',');
+                        // console.log(dataOrderDetail);
+                        dataOrderDetailHtml ='';
+                        dataOrderDetail.forEach(element => {
+                            dataOrderDetailHtml += `<li>${element}</li>`
+                        });
+                        // console.log(string);
                         $('#order-id').text(data.order_id);
                         $('#order-time').text(data.order_time);
                         $('#customer-name').text(data.name);
@@ -228,7 +235,7 @@
                         $('#additional-info').text(data.additional_info);
                         $('#customer-address').text(data.address);
                         $('#delivery-datetime').text(data.datetime);
-                        $('#order-details').text(data.order_details);
+                        $('#order-details').html(`<ul>${dataOrderDetailHtml}</ul>`);
                         $('#order-type').text(data.order_type);
                         $('#order-value').text(data.order_value);
                         $('#order-status').text(data.order_status);

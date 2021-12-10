@@ -60,18 +60,19 @@
                                                             </h3>
                                                             @if( ($d['menu']['grandparent'] != 'dinner' &&$d['menu']['price'] === null 
                                                             && $d['menu']['grandparent'] != 'breakfast' && 
-                                                            $d['menu']['name'] != 'Individual Packaging (pricing on request)') 
-                                                            || ($d['menu']['grandparent'] != 'dinner' &&$d['menu']['price'] === 0) 
-                                                            ) 
+                                                            $d['menu']['name'] != 'Individual Packaging (pricing on request)')  &&  $d['menu']['grandparent'] != 'more')
+                                                            || ($d['menu']['grandparent'] != 'dinner' && $d['menu']['price'] === 0 && $d['menu']['grandparent'] != 'more' ) ) 
                                                                 <b style="font-size: 20px; color: #B0D5B9;">Price to be confirmed</b>
                                                             @endif
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-2 user-group-img">
-                                                        @if($d['menu']['price'] && $d['menu']['name'] != 'Dinner Option 1' && $d['menu']['name'] != 'Dinner Option 2' && $d['menu']['name'] != 'Dinner Option 3' && $d['menu']['name'] != 'Dinner Option 4')
+                                                    <div class="col-md-2 user-group-img {{ $d['menu']['grandparent'] == 'more' && $d['menu']['parent'] == 5 ? 'graze-none' : '' }}">
+                                                        @if($d['menu']['price'] && $d['menu']['name'] != 'Dinner Option 1' && $d['menu']['name'] != 'Dinner Option 2' && $d['menu']['name'] != 'Dinner Option 3' && $d['menu']['name'] != 'Dinner Option 4'
+                                                       
+                                                        )
                                                             <img src="/assets/front/assets/img/green-1.png"
                                                                  style="width: 30px;  transform: translate(-2px, -3px);">
-                                                            <span style="color: green;">$ <span class="menu-item">{{ $d['menu']['price'] }}</span> pp</span>
+                                                            <span style="color: green;">$ <span class="menu-item ">{{ $d['menu']['price'] }}</span> pp</span>
 
                                                         @endif
                                                     </div>
@@ -123,12 +124,28 @@
                                                 <hr>
                                                 <?php $i++;?>
                                             @endforeach
-                                            <div class="row" style="margin-top:20px;font-family:CocoSharp">
-                                                <div class="col col-md-6 col-sm-6" style="font-size:20px">Total</div>
-                                                <div class="col col-md-2 col-sm-6 count-price text-left " style="color:#8ec39b;font-size:20px"></div>
-                                                <div class="col col-md-3 d-none "></div>
-                                                <div class="col col-md-1 d-none"></div>
-                                            </div>
+                                            @foreach($data as $d)
+                                                @if($d['menu']['grandparent'] == 'more' && $d['menu']['parent'] == 5)
+                                                    <div class="row {{ $d['menu']['grandparent'] == 'more' && $d['menu']['parent'] == 5 ? 'graze-none' : '' }}" style="margin-top:20px;font-family:CocoSharp" class="tt ">
+                                                        <div class="row total-wrapper">
+                                                            <div class="col col-md-6 col-sm-6" style="font-size:20px">Total</div>
+                                                            <div class="col col-md-2 col-sm-6 count-price text-left " style="color:#8ec39b;font-size:20px"></div>
+                                                            <div class="col col-md-3 d-none "></div>
+                                                            <div class="col col-md-1 d-none"></div>
+                                                        </div>
+                                                        <p class="graze-diplay" style="font-size:18px">Price on Request</p>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                               
+                                                <div class="row total-wrapper" style="margin-top:20px;font-family:CocoSharp">
+                                                        <div class="col col-md-6 col-sm-6" style="font-size:20px">Total</div>
+                                                        <div class="col col-md-2 col-sm-6 count-price text-left " style="color:#8ec39b;font-size:20px"></div>
+                                                        <div class="col col-md-3 d-none "></div>
+                                                        <div class="col col-md-1 d-none"></div>
+                                                </div>
+                                           
+
                                         </div>
                                       
                                     </div>
@@ -287,7 +304,12 @@
             sumPrice = sumPrice + item;
         });
         sumPrice = sumPrice.toFixed(2);
-        $('.count-price').html(`$ ${sumPrice} pp`);
+        if(sumPrice >0){
+            $('.count-price').html(`$ ${sumPrice} pp`);
+        } else{
+            $('.total-wrapper').css("display","none");
+        }
+        
 
 
         

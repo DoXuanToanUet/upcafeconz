@@ -74,10 +74,10 @@
                                                 <div class="card-body">
 
                                                     {!! $island->content !!}
-
+                                                    
                                                     <div class="card_end_icon">
-
                                                         @if(array_key_exists('island-' . Str::slug($island->name, '-') . '-setup', $data))
+                                                            
 
                                                             @foreach($data['island-' . Str::slug($island->name, '-') . '-setup'] as $islandSetup)
                                                                 @if($islandSetup->name !='Individual Packaging (pricing on request)')
@@ -125,7 +125,7 @@
                                                                                 <div class="height " style="margin-top:15px">
                                                                                     <div class="check-1">
                                                                                         <input class="form-check-input request-input" type="checkbox" value="{{ $islandSetup->id }}" id=""  name="island-options[]"> 
-                                                                                        <span class="price-on-request">Individual packaging (pricing on request)</span>
+                                                                                        <span class="price-on-request">Individual Packaging (pricing on request)</span>
                                                                                         {{-- <span>{{ $d->name }}</span> --}}
                                                                                     </div>
                                                                                 </div>
@@ -158,6 +158,7 @@
                                                             <div class="if-select-buffet">
 
                                                                 @foreach($data['island-' . Str::slug($island->name, '-') . '-additional-options'] as $additionalOptions)
+                                                                    
                                                                     @if($additionalOptions->name !='Individual Packaging (pricing on request)')
                                                                         <div class="selection"
 

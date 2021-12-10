@@ -89,6 +89,11 @@ class CateringController extends Controller
                 14  =>  'xmas-themed',
                 15  =>  'xmas-themed-finger-food-style-setup',
                 16  =>  'xmas-themed-sweet-platter-additional-options',
+                17  =>  'xmas-themed-morning-tea-setup1',
+                18  =>  'xmas-themed-afternoon-tea-setup2',
+                19  =>  'xmas-themed-lunch-setup3',
+                20 =>   'xmas-themed-finger-food-style-package'
+
             ];
             $data = $this->catering->menu('more', $parent);
             return view('admin.catering.more', compact('data'));
