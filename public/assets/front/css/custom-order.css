@@ -975,6 +975,12 @@ input[type=number]::-webkit-inner-spin-button {
 .graze-none .graze-diplay{
     display: block ;
 }
+.cart-page-title .review-item.xmas-title{
+    font-size: 32px !important;
+}
+.price-to-confirm{
+    display: none;
+}
 @media (max-width:1368px) {
     .dinner-page .card-header-title h4{
         font-size: 22px !important;

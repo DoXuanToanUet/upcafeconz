@@ -85,12 +85,12 @@ class HomeController extends Controller
 
     public function review(){
         $data = Session::get('catering');
-        // dd($data);
+       
         if($data && isset($data[0]['menu'])){
             return view('review', compact('data'));
         }
         $data = $this->catering->getReviewMenu();
-
+        //  dd($data);
         if (empty($data)) {
             return redirect()->to( '/catering/breakfast');
         }
